@@ -1,0 +1,7 @@
+---
+- name: install nginx and curl
+  apt:
+    name: nginx,curl
+    state: present
+    cache_valid_time: 3600
+    update_cache: yes

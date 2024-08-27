@@ -1,0 +1,151 @@
+---
+- name: Test
+  hosts: all
+  roles:
+    - nginx
+
+# - name: test des handlers
+#   hosts: all
+#   become: true
+#   # vars:
+#   #   nginx_port: 8888
+#   tasks:
+#   - name: install nginx et curl
+#     apt:
+#       name: nginx,curl
+#       state: present
+#       cache_valid_time: 3600
+#       update_cache: yes
+
+#   - name: remove default file
+#     file: 
+#       path: "{{item}}"
+#       state: absent
+#     with_items:
+#       - "/etc/nginx/sites-available/default"
+#       - "/etc/nginx/sites-enabled/default"
+
+#   - name: install vhost.conf
+#     template:
+#       src: vhost.conf.j2
+#       dest: /etc/nginx/sites-available/vhost.conf
+#       owner: root
+#       group: root
+#       mode: 0644
+#     notify: restart nginx
+  
+#   - name: Création du lien symbolique du vhost.conf
+#     file:
+#       src: /etc/nginx/sites-available/vhost.conf
+#       dest: /etc/nginx/sites-enabled/vhost.conf
+#       state: link
+  
+#   handlers:
+#   - name: restart nginx
+#     service:
+#       name: nginx
+#       state: restarted
+
+
+  # tasks:
+  #   - name: check connexion
+  #     ping: 
+  #   - name: Création du répertoire /tmp/moi
+  #     ansible.builtin.file:
+  #       path: /tmp/moi
+  #       state: directory
+  #       owner: root
+#     # - name: Message debug
+#     #   debug: 
+#     #     msg: "Hello {{ var1 }}"
+
+#     # - name: nettoyage du cache avec module apt
+#     #   apt: 
+#     #     update_cache: true
+#     #     cache_valid_time: 3600
+#     - name: copy files
+#       vars:
+#         files:
+#           - { source: "./send_text/test1.txt", destination: "/tmp/moi/cp_test1.txt", mode: "755", owner: "test" }
+#           - { source: "./send_text/test2.txt", destination: "/tmp/moi/cp_test2.txt", mode: "644", owner: "test" }
+#           - { source: "./send_text/test3.txt", destination: "/tmp/moi/cp_test3.txt", mode: "644", owner: "test" }
+#       copy:
+#         src: "{{item.source}}"
+#         dest: "{{item.destination}}"
+#         mode: "{{item.mode}}"
+#         owner: "{{item.owner}}"
+#       with_items:
+#         - "{{files}}"
+
+# # - name: webserver - create apache directories and username
+# #   hosts: webserver
+# #   become: true
+# #   tasks:
+# #     - name: create group users
+# #       group: 
+# #         name: users
+# #         state: present
+# #     - name: create group users
+# #       group: 
+# #         name: admin
+# #         state: present
+# #     - name: create username apacheadm
+# #       user: 
+# #         name: apacheadm
+# #         groups: users,admin
+# #         append: true
+# #         home: /home/apacheadmin
+
+# #     - name: install apache2
+# #       apt:
+# #         name: apache2
+# #         state: latest
+# # - name: dbserver - create user directories and username
+# #   hosts: dbserver
+# #   become: true
+# #   tasks:
+# #     - name: Create username for user
+# #       user:
+# #         name: utilisateur
+# #         group: users
+# #         append: true
+# #         home: /home/tomcat
+# #     - name: create directory for apache tomcat
+# #       file:
+# #         path: /opt/oracle
+# #         owner: utilisateur
+# #         group: users
+# #         state: directory
+# #         mode: 0755
+
+# - name: test Jinja3
+#   hosts: all
+#   vars:
+#     items:
+#       key1: valeur1
+#       key2: valeur2
+#       key3: valeur3
+#     super_dico:
+#       item1:
+#         name: Alain Delon
+#         city: Dans son jardin
+#       item2:
+#         name: Georges Abitbol
+#         city: Dans un monde de meeerde
+#   tasks:
+#     - name: copy with Jinja3
+#       copy:
+#         content: |
+#           {% for item, data in items.items() %}
+#           {{ item }} >> {{ data }}
+#           {% endfor %}
+#         dest: /tmp/test_jinja_1.txt
+#     - name: debug with Jinja3
+#       copy:
+#         content: |
+#           {% for item in super_dico %}
+#           {{item}} >> {{ super_dico[item].name }} - {{ super_dico[item].city }}
+#           {% endfor %}
+#         dest: /tmp/test_jinja_2.txt
+
+

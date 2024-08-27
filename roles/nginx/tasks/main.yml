@@ -1,0 +1,7 @@
+---
+- name: Check connexion
+  become: true
+  ping:
+- ansible.builtin.include_tasks: install_nginx_curl.yml
+- ansible.builtin.include_tasks: remove_default_files.yml
+- ansible.builtin.include_tasks: install_vhost_conf.yml

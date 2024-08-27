@@ -1,0 +1,4 @@
+nginx_port: 80
+default_files:
+  - "/etc/nginx/sites-available/default"
+  - "/etc/nginx/sites-enabled/default"

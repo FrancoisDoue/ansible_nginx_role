@@ -1,0 +1,9 @@
+---
+- name: install vhost.conf
+  template:
+    src: vhost.conf.j2
+    dest: /etc/nginx/sites-available/vhost.conf
+    owner: root
+    group: root
+    mode: 0644
+  notify: restart nginx

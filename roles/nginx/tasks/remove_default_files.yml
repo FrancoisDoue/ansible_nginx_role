@@ -1,0 +1,5 @@
+---
+- name: remove default file
+  file: 
+    path: '{{ default_files }}'
+    state: absent
