@@ -3,3 +3,4 @@
 !playbook.yml
 !roles
 !.gitignore
+!00_inventory.yml
